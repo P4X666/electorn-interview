@@ -1,7 +1,6 @@
 import React from 'react';
-import lessClass from './index.module.less';
 
-console.log(lessClass, );
+import './index.moule.less';
 
 
 interface IProps {

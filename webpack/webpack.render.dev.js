@@ -26,20 +26,23 @@ const devConfig = {
     rules: [
       {
         test: /\.css$/,
+        exclude: /node_modules/,
+        include: /app/,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.less$/,
         exclude: /node_modules/,
+        include: /app/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[name]__[local]__[hash:base64:5]',
-              },
-            },
+            // options: {
+            //   modules: {
+            //     localIdentName: '[name]__[local]__[hash:base64:5]',
+            //   },
+            // },
           },
           'postcss-loader',
           'less-loader',
