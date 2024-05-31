@@ -2,6 +2,7 @@ const path = require('path');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CSS_MODULE_LOCAL_IDENT_NAME } = require('./constant.js');
 
 const devConfig = {
   mode: 'development',
@@ -38,14 +39,22 @@ const devConfig = {
           'style-loader',
           {
             loader: 'css-loader',
-            // options: {
-            //   modules: {
-            //     localIdentName: '[name]__[local]__[hash:base64:5]',
-            //   },
-            // },
+            options: {
+              modules: {
+                localIdentName: CSS_MODULE_LOCAL_IDENT_NAME,
+                auto: resourcePath => resourcePath.endsWith('.module.less'),
+              },
+            },
           },
           'postcss-loader',
-          'less-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
         ],
       },
     ],

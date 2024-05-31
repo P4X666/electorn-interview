@@ -16,14 +16,17 @@
       }
     ],
     [
-      "babel-plugin-react-css-modules",
+      "@dr.pogodin/react-css-modules",
       {
-        "exclude": "node_modules",
-        "webpackHotModuleReloading": true,
-        "generateScopedName": "[name]__[local]__[hash:base64:5]",
+        "generateScopedName": "[hash:base64:6]",
         "autoResolveMultipleImports": true,
+        "webpackHotModuleReloading": true,
+        // 如果找不到 则抛出错误
+        "handleMissingStyleName": "throw",
         "filetypes": {
-          ".less": { "syntax": "postcss-less" }
+          ".less": {
+            "syntax": "postcss-less"
+          }
         }
       }
     ]
