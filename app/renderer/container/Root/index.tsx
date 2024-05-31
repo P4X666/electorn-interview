@@ -1,31 +1,32 @@
 import React from 'react';
 import { shell } from 'electron';
-import Logo from "../../../assets/logo.png";
+import Logo from "@assets/logo.png";
 import { useNavigate } from 'react-router';
-import './index.less';
+import { ROUTER_ENTRY, ROUTER_KEY } from '@common/constants/router';
+import { isHttpOrHttpsUrl } from '@common/utils/router';
 
-const RouteTextArr = ['介绍', '简历', '源码'] as const
+import './index.less';
 
 function Root() {
   const navigate = useNavigate();
 
-  const onRouterToLink = (text: string) => {
-    if (text === RouteTextArr[1]) {
-      navigate('/resume');
+  const onRouterToLink = (router: TSRouter.Item) => {
+    if (isHttpOrHttpsUrl(router.url)) {
+      shell.openExternal(router.url);
     } else {
-      shell.openExternal('https://github.com/P4X666/electorn-interview');
+      navigate(router.url);
     }
   };
   return <div styleName="root">
   <div styleName="container">
     <img src={Logo} alt="" />
-    <div styleName="title">electron</div>
+    <div styleName="title">electron interview</div>
     <div styleName="tips">一个模板简历制作平台, 让你的简历更加出众 ~</div>
     <div styleName="action">
-      {RouteTextArr.map((text, index) => {
+      {ROUTER_ENTRY.map((router) => {
         return (
-          <div key={index} styleName="item" onClick={() => onRouterToLink(text)}>
-            {text}
+          <div key={router.key} styleName="item" onClick={() => onRouterToLink(router)}>
+            {router.text}
           </div>
         );
       })}
