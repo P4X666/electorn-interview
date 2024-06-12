@@ -2,7 +2,7 @@
  * @desc electron 主入口
  */
 import path from 'path';
-import { app, BrowserWindow, globalShortcut } from 'electron';
+import { app, BrowserWindow, globalShortcut, ipcMain } from 'electron';
 
 function isDev() {
   // 👉 还记得我们配置中通过 webpack.DefinePlugin 定义的构建变量吗
@@ -59,4 +59,10 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
+});
+
+const ROOT_PATH = path.join(app.getAppPath(), '../');
+
+ipcMain.on('get-root-path', (event, arg) => {
+  event.reply('reply-root-path', ROOT_PATH);
 });
