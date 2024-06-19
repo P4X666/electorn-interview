@@ -39,6 +39,11 @@ function createWindow() {
     // 在窗口离开全屏模式时执行操作
     console.log('离开全屏模式');
   });
+  // 事件：主窗口关闭
+  mainWindow.on('close', () => {
+    // 主窗口关闭后，应用默认退出
+    app.quit();
+  });
   return mainWindow;
 }
 
