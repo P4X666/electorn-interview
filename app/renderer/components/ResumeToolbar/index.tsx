@@ -1,7 +1,36 @@
 import React from 'react';
-// import './index.less';
+import './index.less';
+import ScrollBox from '@common/components/ScrollBox';
+import RESUME_TOOLBAR_LIST from '@common/constants/resume';
 
 function ResumeToolbar() {
-  return <div>我是工具条操作区</div>;
+  const height = document.body.clientHeight;
+  return (
+    <div styleName="slider">
+      <ScrollBox maxHeight={height - 180}>
+        <div styleName="modules">
+          <div styleName="title">
+            <span styleName="line" />
+            全部模块
+          </div>
+          <div styleName="content">
+            {RESUME_TOOLBAR_LIST.map(toolbar => {
+              return (
+                <div styleName="box" key={toolbar.key}>
+                  <div styleName="info">
+                    <i styleName="icon" />
+                    <div styleName="text">
+                      <div styleName="name">{toolbar.name}</div>
+                      <div styleName="summary">{toolbar.summary}</div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </ScrollBox>
+    </div>
+  );
 }
 export default ResumeToolbar;
