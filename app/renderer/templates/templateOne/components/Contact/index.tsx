@@ -3,17 +3,17 @@
  * @author pengdaokuan
  */
 import React from 'react';
-import '../../../styles/template-one.less';
+import { Container, Title, Content } from '@src/templates/styles/template-one';
 
 function Contact() {
   return (
-    <div styleName="container">
-      <p styleName="title">联系方式 Contact</p>
-      <ul styleName="content">
+    <Container>
+      <Title>联系方式 Contact</Title>
+      <Content>
         <li>电话：176****2612</li>
         <li>邮箱：1063137960@qq.com</li>
-      </ul>
-    </div>
+      </Content>
+    </Container>
   );
 }
 

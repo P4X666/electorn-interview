@@ -3,16 +3,16 @@
  * @author pengdaokuan
  */
 import React from 'react';
-import './index.less';
 import AvatarImage from '@assets/avatar.jpg';
+import { AvatarBox, AvatarImgWrap } from '@src/templates/styles/template-one';
 
 function Avatar() {
   return (
-    <div styleName="box">
-      <div styleName="avatar">
+    <AvatarBox>
+      <AvatarImgWrap>
         <img src={AvatarImage} />
-      </div>
-    </div>
+      </AvatarImgWrap>
+    </AvatarBox>
   );
 }
 

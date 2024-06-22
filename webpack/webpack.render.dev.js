@@ -1,6 +1,7 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CSS_MODULE_LOCAL_IDENT_NAME } = require('./constant.js');
 
@@ -29,7 +30,12 @@ const devConfig = {
         test: /\.css$/,
         exclude: /node_modules/,
         include: /app/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [
+          // MiniCssExtractPlugin.loader,
+          'style-loader', 
+          'css-loader', 
+          'postcss-loader'
+        ],
       },
       {
         test: /\.less$/,
@@ -67,6 +73,10 @@ const devConfig = {
       filename: path.resolve(__dirname, '../dist/index.html'),
       chunks: ['index'],
     }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css',
+    //   chunkFilename: '[id].css',
+    // }),
   ],
 };
 

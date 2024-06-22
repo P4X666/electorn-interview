@@ -6,12 +6,14 @@ import ROUTER from '@common/constants/router';
 
 import Button from '@common/components/Button';
 
-function ResumeAction() {
+function ResumeAction(props: {exportHandle:()=>void}) {
   const navigate = useNavigate()
   // 返回首页
   const onBack = () => navigate(ROUTER.root);
   // TODO: 利用electron webContents.printToPDF 导出PDF
-  const onExport = () => {};
+  const onExport = () => {
+    props?.exportHandle()
+  };
 
   return (
     <div styleName="actions">

@@ -7,9 +7,13 @@
   "scripts": {
     "start:main": "webpack --config ./webpack/webpack.main.dev.js && electron ./dist/electron.js",
     "start:render": "webpack-dev-server --config ./webpack/webpack.render.dev.js",
+
+    "build:render": "webpack --config ./webpack/webpack.render.prod.js",
     "dev": "concurrently \"wait-on http://localhost:7001 && npm run start:main\" \"npm run start:render\""
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "autoprefixer": "^10.4.19",
     "classnames": "^2.5.1",
     "react": "^18.3.0",
@@ -50,6 +54,7 @@
     "html-webpack-plugin": "^5.6.0",
     "less": "^4.2.0",
     "less-loader": "^12.2.0",
+    "mini-css-extract-plugin": "^2.9.0",
     "postcss-less": "^6.0.0",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.2.5",

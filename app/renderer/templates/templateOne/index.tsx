@@ -11,7 +11,7 @@ import Job from './components/Job';
 import Certificate from './components/Certificate';
 import Synopsis from './components/Synopsis';
 import Skill from './components/Skill';
-import Post from './components/Post';
+// import Post from './components/Post';
 import Project from './components/Project';
 import Work from './components/Work';
 
@@ -38,7 +38,7 @@ function TemplateOne() {
           <Synopsis />
           <div styleName="listData">
             <Skill />
-            <Post />
+            {/* <Post /> */}
             <Project />
             <Work />
           </div>

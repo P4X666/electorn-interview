@@ -2,6 +2,7 @@
  * @desc electron 主入口
  */
 import path from 'path';
+import fs from 'fs/promises'
 import { app, BrowserWindow, globalShortcut, ipcMain } from 'electron';
 
 function isDev() {
@@ -47,8 +48,9 @@ function createWindow() {
   return mainWindow;
 }
 
+let mainWindow:BrowserWindow
 app.whenReady().then(() => {
-  const mainWindow = createWindow();
+  mainWindow = createWindow();
   app.on('ready', () => {
     globalShortcut.register('CommandOrControl+Shift+i', function () {
       // 判断现在控制台是否处于打开状态
@@ -70,4 +72,40 @@ const ROOT_PATH = path.join(app.getAppPath(), '../');
 
 ipcMain.on('get-root-path', (event, arg) => {
   event.reply('reply-root-path', ROOT_PATH);
+});
+
+let pdfWindow: BrowserWindow | null = null;
+ipcMain.on('export-pdf', async (_event, obj) => {
+  pdfWindow = new BrowserWindow({
+    webPreferences: {
+      nodeIntegration: true,
+      webSecurity: false,
+    },
+    show: true, // 如果不想显示窗口可以改为false
+    width: 800,
+    height: 600,
+    fullscreenable: true,
+    minimizable: false
+  });
+
+  pdfWindow.loadURL(`data:text/html;charset=utf-8,${encodeURIComponent(obj.html)}`);
+  pdfWindow.webContents.on('did-finish-load', () => {
+    // Use default printing options
+    const pdfPath = obj.filePath || path.resolve(`./resume-${Date.now()}.pdf`);
+    pdfWindow?.webContents.printToPDF({ printBackground: true, landscape: true  }).then(data => {
+      console.log('=============', pdfPath);
+      
+      fs.writeFile(pdfPath, data).then(()=>{
+        console.log('导出成功，路径：');
+        
+        mainWindow.webContents.send('export-pdf-res', { success: `导出成功，路径：${pdfPath}` });
+        // pdfWindow?.close(); // 保存pdf过后关闭该窗口
+        pdfWindow = null;
+      }).catch((error)=>{
+        throw error;
+      })
+    }).catch(error => {
+      mainWindow.webContents.send('export-pdf-res', { failed: `导出失败，路径：${JSON.stringify(error)}` });
+    });
+  });
 });
