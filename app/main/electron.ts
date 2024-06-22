@@ -48,7 +48,7 @@ function createWindow() {
   return mainWindow;
 }
 
-let mainWindow:BrowserWindow
+let mainWindow: BrowserWindow
 app.whenReady().then(() => {
   mainWindow = createWindow();
   app.on('ready', () => {
@@ -81,7 +81,7 @@ ipcMain.on('export-pdf', async (_event, obj) => {
       nodeIntegration: true,
       webSecurity: false,
     },
-    show: true, // 如果不想显示窗口可以改为false
+    show: false, // 如果不想显示窗口可以改为false
     width: 800,
     height: 600,
     fullscreenable: true,
@@ -92,16 +92,16 @@ ipcMain.on('export-pdf', async (_event, obj) => {
   pdfWindow.webContents.on('did-finish-load', () => {
     // Use default printing options
     const pdfPath = obj.filePath || path.resolve(`./resume-${Date.now()}.pdf`);
-    pdfWindow?.webContents.printToPDF({ printBackground: true, landscape: true  }).then(data => {
+    pdfWindow?.webContents.printToPDF({ printBackground: true, landscape: true }).then(data => {
       console.log('=============', pdfPath);
-      
-      fs.writeFile(pdfPath, data).then(()=>{
+
+      fs.writeFile(pdfPath, data).then(() => {
         console.log('导出成功，路径：');
-        
+
         mainWindow.webContents.send('export-pdf-res', { success: `导出成功，路径：${pdfPath}` });
-        // pdfWindow?.close(); // 保存pdf过后关闭该窗口
+        pdfWindow?.close(); // 保存pdf过后关闭该窗口
         pdfWindow = null;
-      }).catch((error)=>{
+      }).catch((error) => {
         throw error;
       })
     }).catch(error => {

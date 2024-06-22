@@ -14,37 +14,47 @@ import Skill from './components/Skill';
 // import Post from './components/Post';
 import Project from './components/Project';
 import Work from './components/Work';
+import {
+  A4BoxContainLeftWrap,
+  A4BoxContainWrap,
+  A4BoxWrap,
+  A4BoxContainLeftAvatarWrap,
+  A4BoxContainLeftFillColor,
+  A4BoxContainBaseDataWrap,
+  A4BoxContainListWrap,
+  A4BoxContainMainWrap,
+} from '../styles/template-one';
 
 function TemplateOne() {
   // 必须带有id，以方便导出时获取DOM元素内容
   return (
-    <div styleName="a4-box">
-      <div styleName="flex container" id="visPdf">
+    <A4BoxWrap>
+      <A4BoxContainWrap>
         {/* 左侧 */}
-        <div styleName="left">
-          <div styleName="avatar">
+        <A4BoxContainLeftWrap>
+          <A4BoxContainLeftAvatarWrap>
             <Avatar />
-          </div>
-          <div styleName="fillColor" />
-          <div styleName="baseData">
+          </A4BoxContainLeftAvatarWrap>
+          <A4BoxContainLeftFillColor />
+          <A4BoxContainBaseDataWrap>
             <BaseInfo />
             <Contact />
             <Job />
             <Certificate />
-          </div>
-        </div>
+          </A4BoxContainBaseDataWrap>
+        </A4BoxContainLeftWrap>
         {/* 内容 */}
-        <div styleName="center">
+        <A4BoxContainMainWrap>
           <Synopsis />
-          <div styleName="listData">
+          <A4BoxContainListWrap>
             <Skill />
             {/* <Post /> */}
             <Project />
             <Work />
-          </div>
-        </div>
-      </div>
-    </div>
+          </A4BoxContainListWrap>
+        </A4BoxContainMainWrap>
+      </A4BoxContainWrap>
+    </A4BoxWrap>
   );
 }
 
