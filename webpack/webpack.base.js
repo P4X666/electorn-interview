@@ -21,19 +21,22 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
             plugins: [
-              ['@dr.pogodin/react-css-modules', {
-                generateScopedName: CSS_MODULE_LOCAL_IDENT_NAME,
-                autoResolveMultipleImports: true,
-                webpackHotModuleReloading: true,
-                handleMissingStyleName: 'throw',
-                filetypes: {
-                  '.less': {
-                    syntax: 'postcss-less',
+              [
+                '@dr.pogodin/react-css-modules',
+                {
+                  generateScopedName: CSS_MODULE_LOCAL_IDENT_NAME,
+                  autoResolveMultipleImports: true,
+                  webpackHotModuleReloading: true,
+                  handleMissingStyleName: 'throw',
+                  filetypes: {
+                    '.less': {
+                      syntax: 'postcss-less',
+                    },
                   },
                 },
-              }],
+              ],
             ],
-          }
+          },
         },
       },
       {
@@ -50,5 +53,5 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin()],
+  // plugins: [new CleanWebpackPlugin()], // 防止打包清空了 electron.js
 };

@@ -1,29 +1,72 @@
 {
   "name": "electron-interview",
   "version": "0.0.1",
-  "author": "",
+  "author": "pengshixing",
   "description": "简历平台桌面应用。",
-  "main": "./app/main/electron.ts",
+  "main": "./dist/electron.js",
   "scripts": {
     "start:main": "webpack --config ./webpack/webpack.main.dev.js && electron ./dist/electron.js",
     "start:render": "webpack-dev-server --config ./webpack/webpack.render.dev.js",
-
-    "build:render": "webpack --config ./webpack/webpack.render.prod.js",
-    "dev": "concurrently \"wait-on http://localhost:7001 && npm run start:main\" \"npm run start:render\""
+    "dev": "concurrently \"wait-on http://localhost:7001 && npm run start:main\" \"npm run start:render\"",
+    "build:main": "webpack --config ./webpack/webpack.main.prod.js",
+    "build:render": "webpack --config ./webpack/webpack.render.dev.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build": "npm run build:main && npm run build:render"
+  },
+  "build": {
+    "appId": "electronInterview.ElectronReact",
+    "productName": "electronInterview",
+    "copyright": "Copyright © 2024 ${author}",
+    "extends": null,
+    "files": [
+      "dist/**/*",
+      "package.json",
+      "node_modules/"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "distAssets"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "msi"
+      ]
+    }
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "autoprefixer": "^10.4.19",
     "classnames": "^2.5.1",
     "react": "^18.3.0",
-    "react-css-modules": "^4.7.11",
     "react-dom": "^18.3.0",
     "react-router": "^6.23.0",
     "react-router-dom": "^6.23.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "autoprefixer": "^10.4.19",
     "@babel/core": "^7.24.0",
     "@babel/plugin-syntax-jsx": "^7.24.1",
     "@babel/plugin-transform-modules-commonjs": "^7.24.1",
@@ -44,6 +87,7 @@
     "concurrently": "^8.2.2",
     "css-loader": "^7.1.1",
     "electron": "^30.0.1",
+    "electron-builder": "^24.13.3",
     "eslint": "^8.57.0",
     "eslint-config-alloy": "^5.1.2",
     "eslint-config-prettier": "^9.1.0",
@@ -58,6 +102,7 @@
     "postcss-less": "^6.0.0",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.2.5",
+    "react-css-modules": "^4.7.11",
     "style-loader": "^4.0.0",
     "typescript": "^5.4.5",
     "wait-on": "^7.2.0",
