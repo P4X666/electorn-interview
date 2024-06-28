@@ -14,7 +14,11 @@ const exportToStr=()=>{
   .filter(item=> item.getAttribute('data-emotion') === 'css')
   .map(item=> `${item.innerHTML}`)
   
-  exportStrToPDF(`<style>${styles.join('')}</style>${htmlString}`)
+  exportStrToPDF(`<style>${styles.join('')}</style>${htmlString}`).then(res=>{
+    console.log('下载成功了！！！');
+    console.log('文件地址----------->', res.filePath);
+    
+  })
 }
 
 function Resume() {

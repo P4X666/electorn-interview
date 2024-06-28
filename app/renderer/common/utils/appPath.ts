@@ -1,4 +1,5 @@
 // 监听主进程与渲染进程通信
+import type { ExportPdfResType } from 'app/main/types';
 import { ipcRenderer } from 'electron';
 
 /**
@@ -19,9 +20,9 @@ export function getAppPath(): Promise<string> {
 }
 
 export const exportStrToPDF=(htmlStr: string)=>{
-  return new Promise((resolve: (value: string) => void, reject: (value: Error) => void) => {
+  return new Promise((resolve: (value: ExportPdfResType) => void, reject: (value: Error) => void) => {
     ipcRenderer.send('export-pdf', {html: htmlStr});
-    ipcRenderer.on('export-pdf-res', (event, arg: string) => {
+    ipcRenderer.on('export-pdf-res', (event, arg) => {
       if (arg) {
         resolve(arg);
       } else {
