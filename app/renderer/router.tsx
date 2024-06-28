@@ -1,12 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Root from './container/Root';
 import Resume from './container/Resume';
 
 function AppRouter() {
   return (
     <>
-      <button onClick={() => window.location.reload()}>返回首页</button>
       <Router>
         <Routes>
           <Route path="/" element={<Root />} />

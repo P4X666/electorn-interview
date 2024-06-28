@@ -5,10 +5,13 @@ import path from 'path';
 import fs from 'fs/promises'
 import { app, BrowserWindow, globalShortcut, ipcMain } from 'electron';
 
-function isDev() {
-  // 👉 还记得我们配置中通过 webpack.DefinePlugin 定义的构建变量吗
-  return process.env.NODE_ENV === 'development';
-}
+// function isDev() {
+//   // 👉 还记得我们配置中通过 webpack.DefinePlugin 定义的构建变量吗
+//   return process.env.NODE_ENV === 'development';
+// }
+const isEnvSet = 'ELECTRON_IS_DEV' in process.env;
+const getFromEnv = Number.parseInt(process.env.ELECTRON_IS_DEV!, 10) === 1;
+const isDev = isEnvSet ? getFromEnv : !app.isPackaged;
 
 function createWindow() {
   // 创建浏览器窗口
@@ -23,7 +26,7 @@ function createWindow() {
     },
   });
 
-  if (isDev()) {
+  if (isDev) {
     // 👇 看到了吗，在开发环境下，我们加载的是运行在 7001 端口的 React
     mainWindow.loadURL(`http://127.0.0.1:7001`);
   } else {
