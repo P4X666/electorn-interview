@@ -1,32 +1,32 @@
 import React from 'react';
 import { 
   FullWidthWrap,
-  ProjectComponentWrap,
   ProjectComponentLabel,
   ProjectComponentList,
   ProjectComponentItemBox,
   ProjectComponentItemContent,
   ProjectComponentFlexWrap,
   ProjectComponentLeftContent,
-  ProjectComponentRightContent
+  ProjectComponentRightContent,
+  CommonContent
  } from '@src/templates/styles/template-one';
 
 
 function Project() {
   return (
-    <ProjectComponentWrap>
+    <FullWidthWrap>
       <ProjectComponentLabel>项目经历 Project</ProjectComponentLabel>
       <ProjectComponentList>
         <ProjectComponentFlexWrap>
           <ProjectComponentLeftContent>
-            <p>
+            <CommonContent>
               <span>2021.03 - 2021.05</span>
-            </p>
+            </CommonContent>
           </ProjectComponentLeftContent>
           <ProjectComponentRightContent>
-            <p>
+            <CommonContent>
               <span>visResumeMook 可视化简历平台 -前端工程师</span>
-            </p>
+            </CommonContent>
           </ProjectComponentRightContent>
           <FullWidthWrap>
             <ProjectComponentItemBox>
@@ -43,7 +43,7 @@ function Project() {
           </FullWidthWrap>
         </ProjectComponentFlexWrap>
       </ProjectComponentList>
-    </ProjectComponentWrap>
+    </FullWidthWrap>
   );
 }
 

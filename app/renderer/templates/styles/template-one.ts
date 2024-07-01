@@ -43,10 +43,6 @@ export const FullWidthWrap = styled.div`
 `;
 export const ProjectComponentWrap = styled.div`
   width: 100%;
-  position: relative;
-  & p {
-    margin-bottom: 0px;
-  }
 `;
 export const ProjectComponentLabel = styled.p`
   padding-bottom: 8px;
@@ -77,28 +73,21 @@ export const ProjectComponentFlexWrap = styled.li`
   margin-bottom: 16px;
   flex-wrap: wrap;
 `;
+export const CommonContent = styled.p`
+  margin-bottom: 4px;
+  height: 18px;
+  line-height: 18px;
+  color: #01426f;
+  font-weight: bold;
+`
 export const ProjectComponentLeftContent = styled.div`
   width: 25%;
   font-size: 13px;
-  & > p {
-    margin-bottom: 4px;
-    height: 18px;
-    line-height: 18px;
-    color: #01426f;
-    font-weight: bold;
-  }
 `;
 export const ProjectComponentRightContent = styled.div`
   width: 75%;
   color: rgba(0, 0, 0, 0.8);
   font-size: 13px;
-  & > p {
-    margin-bottom: 4px;
-    height: 18px;
-    line-height: 18px;
-    color: #01426f;
-    font-weight: bold;
-  }
 `;
 
 export const A4BoxWrap = styled.div`
@@ -140,3 +129,48 @@ export const A4BoxContainMainWrap = styled.div`
 export const A4BoxContainListWrap = styled.div`
   margin-top: 32px;
 `;
+
+export const SkillLableWrap = styled.p`
+  padding-bottom: 8px;
+  color: #01426f;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 0px;
+`;
+
+export const SkillListWrap = styled.ul`
+  padding: 12px 0 32px;
+`;
+export const SkillItemWrap = styled.li`
+  list-style: outside;
+  margin-left: 24px;
+  line-height: 24px;
+  font-size: 13px;
+  color: #345975;
+  font-weight: bold;
+`;
+
+export const SynopsisWrap = styled.div`
+  padding-top: 20px;
+`
+
+export const SynopsisNameWrap = styled.div`
+  margin-bottom: 8px;
+  color: #01426f;
+  font-size: 28px;
+  font-weight: bold;
+`
+export const SynopsisJobWrap = styled.div`
+  margin-bottom: 8px;
+  color: #01426f;
+  font-size: 18px;
+  font-weight: bold;
+`
+
+export const SynopsisSummaryWrap = styled.div`
+  margin-top: 16px;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 22px;
+  font-size: 13px;
+`

@@ -2,26 +2,34 @@
  * @desc 工作经历
  * @author pengdaokuan
  */
-import './index.less';
+import { 
+  CommonContent,
+  FullWidthWrap,
+  ProjectComponentFlexWrap, 
+  ProjectComponentLabel, 
+  ProjectComponentLeftContent, 
+  ProjectComponentList, 
+  ProjectComponentRightContent
+ } from '@src/templates/styles/template-one';
 import React from 'react';
 
 function Work() {
   return (
-    <div styleName="content">
-      <p styleName="label">工作经历 Post</p>
-      <ul styleName="list">
-        <li styleName="flex">
-          <div styleName="left">
-            <p>2019.07-至今</p>
-            <p>前端工程师</p>
-          </div>
-          <div styleName="right">
-            <p>CVTE</p>
-            <p>就职于CVTE，部门人送广州彭于晏，其他的没啥介绍了</p>
-          </div>
-        </li>
-      </ul>
-    </div>
+    <FullWidthWrap>
+      <ProjectComponentLabel>工作经历 Post</ProjectComponentLabel>
+      <ProjectComponentList>
+        <ProjectComponentFlexWrap>
+          <ProjectComponentLeftContent>
+            <CommonContent>2019.07-至今</CommonContent>
+            <CommonContent>前端工程师</CommonContent>
+          </ProjectComponentLeftContent>
+          <ProjectComponentRightContent>
+            <CommonContent>CVTE</CommonContent>
+            <CommonContent>就职于CVTE，部门人送广州彭于晏，其他的没啥介绍了</CommonContent>
+          </ProjectComponentRightContent>
+        </ProjectComponentFlexWrap>
+      </ProjectComponentList>
+    </FullWidthWrap>
   );
 }
 
