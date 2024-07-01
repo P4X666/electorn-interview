@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.less';
 import ScrollBox from '@common/components/ScrollBox';
 import RESUME_TOOLBAR_LIST from '@common/constants/resume';
 
 function ResumeToolbar() {
-  const height = document.body.clientHeight;
+  const [maxHeight, setMaxHeight] = useState(600)
+  useEffect(()=>{
+    const height = document.body.clientHeight;
+    setMaxHeight(height-180)
+  }, [])
   return (
     <div styleName="slider">
-      <ScrollBox maxHeight={height - 180}>
+      <ScrollBox maxHeight={maxHeight}>
         <div styleName="modules">
           <div styleName="title">
             <span styleName="line" />

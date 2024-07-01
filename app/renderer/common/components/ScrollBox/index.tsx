@@ -34,7 +34,7 @@ function ScrollBox({ children, maxHeight = 200, style = {}, innerStyle = {}, onS
   }
   return (
     <div className="scroll-box-outer" style={_style} onScroll={onScroll}>
-      <div className="scroll-box-hidden" style={{ maxHeight: `${maxHeight}px` }}>
+      <div className="scroll-box-hidden" style={{ maxHeight }}>
         <div className="scroll-box-inter" style={innerStyle}>
           {children}
         </div>
