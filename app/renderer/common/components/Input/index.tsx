@@ -82,7 +82,7 @@ type Ref = React.ForwardedRef<{
   blur: () => void,
 }>
 
-export const Input = forwardRef((props: InputProps, ref: Ref ) => {
+const Input = forwardRef((props: InputProps, ref: Ref ) => {
   const {
     value,
     onChange,
@@ -236,3 +236,5 @@ export const Input = forwardRef((props: InputProps, ref: Ref ) => {
     </div>
   );
 })
+
+export default Input

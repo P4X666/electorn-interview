@@ -10,14 +10,17 @@ function MyDialog({
   title,
   width,
   className,
-  showFooter,
+  showFooter: _showFooter,
   renderFooter,
   config = {},
   eleRef,
   children,
   childStyle,
 }: IDialogModal) {
-  const { cancelBtn = { isShow: true }, submitBtn = { isShow: true } } = config;
+  const { cancelBtn: _cancelBtn, submitBtn: _submitBtn } = config;
+  const cancelBtn = { isShow: true, text: '取消', ..._cancelBtn }
+  const submitBtn = { isShow: true, text: '确定', ..._submitBtn }
+  const showFooter = _showFooter === undefined ? true : _showFooter;
   return (
     <div styleName="vis-mask">
       <div styleName="center">

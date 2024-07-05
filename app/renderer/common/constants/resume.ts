@@ -9,7 +9,7 @@ export const RESUME_TOOLBAR_MAPS = {
   certificate: 'certificate', // 获奖证书
   evaluation: 'evaluation', // 个人评价
   skill: 'skill', // 技能清单
-  test: 'test', // 测试用例
+  // test: 'test', // 测试用例
 };
 
 const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
@@ -71,11 +71,11 @@ const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
     name: '技能清单',
     summary: '展示具备的技能，突出你的能力',
   },
-  {
-    key: RESUME_TOOLBAR_MAPS.test,
-    name: '测试用例',
-    summary: '测试用例，一键覆盖',
-  },
+  // {
+  //   key: RESUME_TOOLBAR_MAPS.test,
+  //   name: '测试用例',
+  //   summary: '测试用例，一键覆盖',
+  // },
 ];
 
 export default RESUME_TOOLBAR_LIST;
