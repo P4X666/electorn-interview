@@ -10,7 +10,7 @@ export const RESUME_TOOLBAR_MAPS = {
   evaluation: 'evaluation', // 个人评价
   skill: 'skill', // 技能清单
   // test: 'test', // 测试用例
-};
+} as const;
 
 const RESUME_TOOLBAR_LIST: TSResume.SliderItem[] = [
   {

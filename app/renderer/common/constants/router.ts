@@ -1,15 +1,15 @@
 // 模块路径
-const ROUTER = {
+export const ROUTER = {
   root: '/',
   resume: '/resume',
-  template: '/template'
+  template: '/templateList'
 };
 export default ROUTER;
 
 export const ROUTER_KEY = {
   root: 'root',
   resume: 'resume',
-  template: 'template'
+  template: 'templateList'
 };
 
 // 入口模块

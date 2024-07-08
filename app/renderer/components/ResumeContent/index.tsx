@@ -14,11 +14,11 @@ import WorkForm from './UseForm/Work';
 import ProjectExperience from './UseForm/ProjectExperience';
 import SchoolExperience from './UseForm/SchoolExperience';
 import WorkExperience from './UseForm/WorkExperience';
-import useResumeModel, { type Action, type State } from '@src/store/resumeModel';
+import useResumeModel, { type State } from '@src/store/resumeModel';
 
 const HEADER_ACTION_HEIGHT = 92;
 
-export const InterviewInfoContext = React.createContext<State & Action>({} as State & Action)
+export const InterviewInfoContext = React.createContext<State>({} as State)
 
 function ResumeContent() {
   const store = useResumeModel();
