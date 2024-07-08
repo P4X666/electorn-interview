@@ -3,7 +3,6 @@
  * @author pengdaokuan
  */
 import React from 'react';
-import './index.less';
 import {
   SynopsisJobWrap,
   SynopsisNameWrap,

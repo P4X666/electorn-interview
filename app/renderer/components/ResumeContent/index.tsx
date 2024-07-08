@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './index.less';
 import ScrollBox from '@common/components/ScrollBox';
-import * as UseTemplateList from '../../templates';
+import * as UseTemplateList from './templates';
 import Messager, { MESSAGE_EVENT_NAME_MAPS } from '@common/messager';
 import { RESUME_TOOLBAR_MAPS } from '@common/constants/resume';
 import CertificateForm from './UseForm/Certificate';
@@ -14,10 +14,14 @@ import WorkForm from './UseForm/Work';
 import ProjectExperience from './UseForm/ProjectExperience';
 import SchoolExperience from './UseForm/SchoolExperience';
 import WorkExperience from './UseForm/WorkExperience';
+import useResumeModel, { type Action, type State } from '@src/store/resumeModel';
 
 const HEADER_ACTION_HEIGHT = 92;
 
+export const InterviewInfoContext = React.createContext<State & Action>({} as State & Action)
+
 function ResumeContent() {
+  const store = useResumeModel();
   const [maxHeight, setMaxHeight] = useState(600);
   useEffect(() => {
     const height = document.body.clientHeight;
@@ -66,7 +70,9 @@ function ResumeContent() {
 
   return (
     <ScrollBox maxHeight={maxHeight}>
-      <UseTemplateList.TemplateOne />
+      <InterviewInfoContext.Provider value={store}>
+        <UseTemplateList.TemplateOne />
+      </InterviewInfoContext.Provider>
       {showFormModal && formName && renderModal(formName)}
     </ScrollBox>
   );

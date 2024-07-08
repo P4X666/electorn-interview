@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer'
-import { set } from 'lodash/fp'
+import { set as lodashSet } from 'lodash/fp'
 
 const state = {
   base: {
@@ -51,7 +51,7 @@ const state = {
   ],
   // certificate: '广州第一届喝酒大赛参与奖',
   // certificateList: ['广州第一届喝酒大赛参与奖'],
-  certificate: ['广州第一届喝酒大赛参与奖'],
+  certificate: ['全国英语四级证书', '全国计算机二级证书', '广州第一届喝酒大赛参与奖',],
   schoolExperience: [
     {
       beginTime: '2016.09',
@@ -68,6 +68,18 @@ const state = {
     },
   ],
   workExperience: [
+    {
+      beginTime: '2019.04',
+      endTime: '至今',
+      post: '前端工程师',
+      department: 'CVTE',
+      content:
+        '就职于CVTE，部门人送广州彭于晏，其他的没啥介绍了',
+      parseContent: [
+        '就职于CVTE，部门人送广州彭于晏，其他的没啥介绍了',
+      ],
+      date: 1621145137865,
+    },
     {
       beginTime: '2017.09',
       endTime: '2019.04',
@@ -100,19 +112,18 @@ const state = {
   ],
 };
 
-type State = typeof state;
+export type State = typeof state;
 
 export type StateKeyType = keyof State
 
-type Action = {
-  updateStore: <K extends keyof State, valueType>(key: K, value: valueType | State[K]) => void;
+export type Action = {
+  updateStore: <K extends keyof State, ValueType>(key: K, value: ValueType | State[K]) => void;
 };
-const useResumeModel = create(immer<State & Action>((set) => ({
-  ...state,
-  updateStore: (key, value) => set((state) => {
-    // @ts-ignore
-    set(state, key, value)
-  }),
-})));
+const useResumeModel = create(
+  immer<State & Action>(set => ({
+    ...state,
+    updateStore: (key, value) => set(state => lodashSet(key, value)(state)),
+  }))
+);
 
 export default useResumeModel;
