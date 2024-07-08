@@ -15,6 +15,10 @@ function Evaluation({ onClose }: IProps) {
   const store = useResumeModel();
   const { evaluation, updateStore } = store;
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="个人评价"
@@ -23,6 +27,9 @@ function Evaluation({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
     >
       <div styleName="form">

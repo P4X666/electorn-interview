@@ -14,6 +14,10 @@ function Contact({ onClose }: IProps) {
   const store = useResumeModel();
   const { contact, updateStore } = store;
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="联系方式"
@@ -22,6 +26,9 @@ function Contact({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
     >
       <div styleName="form">

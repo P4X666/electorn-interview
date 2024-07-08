@@ -14,6 +14,10 @@ function Education({ onClose }: IProps) {
   const store = useResumeModel();
   const { base, updateStore } = store;
 
+  const submitHandle=()=>{
+    onClose()
+  }
+  
   return (
     <MyModal.Dialog
       title="教育信息"
@@ -22,6 +26,9 @@ function Education({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
     >
       <div styleName="form">

@@ -19,6 +19,10 @@ function ProjectExperience({ onClose }: IProps) {
     updateStore<'projectExperience', AdapterExperienceType[]>('projectExperience', newDataList);
   };
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="项目经验"
@@ -27,6 +31,9 @@ function ProjectExperience({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
       width={960}
       childStyle={{ padding: 0 }}

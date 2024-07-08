@@ -14,6 +14,10 @@ function Work({ onClose }: IProps) {
   const store = useResumeModel();
   const { work, updateStore } = store;
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="工作期望"
@@ -22,6 +26,9 @@ function Work({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
     >
       <div styleName="form">

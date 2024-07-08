@@ -18,6 +18,10 @@ function WorkExperience({ onClose }: IProps) {
     updateStore<'workExperience', AdapterExperienceType[]>('workExperience', newDataList);
   };
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="工作经历"
@@ -26,6 +30,9 @@ function WorkExperience({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
       width={960}
       childStyle={{ padding: 0 }}

@@ -19,6 +19,10 @@ function SchoolExperience({ onClose }: IProps) {
     updateStore<'schoolExperience', AdapterExperienceType[]>('schoolExperience', newDataList);
   };
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="在校经历"
@@ -27,6 +31,9 @@ function SchoolExperience({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
       width={960}
       childStyle={{ padding: 0 }}

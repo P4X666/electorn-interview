@@ -14,6 +14,10 @@ function Personal({ onClose }: IProps) {
   const store = useResumeModel();
   const { base, hobby, updateStore } = store;
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="个人信息"
@@ -22,6 +26,9 @@ function Personal({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
     >
       <div styleName="form">

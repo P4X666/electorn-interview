@@ -15,6 +15,10 @@ function Certificate({ onClose }: IProps) {
   const store = useResumeModel();
   const { certificate, updateStore } = store;
 
+  const submitHandle=()=>{
+    onClose()
+  }
+
   return (
     <MyModal.Dialog
       title="荣誉证书"
@@ -23,6 +27,9 @@ function Certificate({ onClose }: IProps) {
         cancelBtn: {
           callback: onClose,
         },
+        submitBtn: {
+          callback: submitHandle
+        }
       }}
     >
 
