@@ -19,7 +19,7 @@ function AppRouter() {
       <Router>
         <Routes>
           <Route path="/" element={<Root />} />
-          <Route path="/resume" element={<Resume />} />
+          <Route path={ROUTER.resume} element={<Resume />} />
           <Route path={ROUTER.template} element={<TemplateList />} />
           {/* 添加一个 catch-all 路由来重定向到首页 */}
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -51,15 +51,10 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|jpeg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name]_[hash].[ext]',
-              outputPath: 'images/',
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name]-[hash][ext]',
+        },
       },
       {
         test: /\.css$/,
