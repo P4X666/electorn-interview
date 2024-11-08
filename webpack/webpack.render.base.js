@@ -50,16 +50,16 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpg|png|jpeg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name]_[hash].[ext]',
-              outputPath: 'images/',
-            },
-          },
-        ],
+        test: /\.(jpe?g|png|svg|gif)/i,
+        type: 'asset',
+        generator: {
+          filename: 'images/[name]-[hash][ext]'
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024 // 限制于 8kb 小于它的图片会被转成 base64
+          }
+        }
       },
       {
         test: /\.css$/,
