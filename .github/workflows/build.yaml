@@ -24,7 +24,7 @@ jobs:
         run: npm install
       # 开始打包
       - name: Build Electron app
-        run: npm run build && npm run dist
+        run: npm run build && npm run pack
       # 发布到release
       - name: Create release
         uses: ncipollo/release-action@v1
