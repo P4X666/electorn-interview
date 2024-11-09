@@ -2,6 +2,7 @@
   "name": "electron-interview",
   "version": "0.0.1",
   "author": "pengshixing",
+  "email": "2644378911@qq.com",
   "description": "简历平台桌面应用。",
   "main": "./dist/electron.js",
   "scripts": {
