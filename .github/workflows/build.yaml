@@ -32,6 +32,6 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          tag: 'v-0.0.1'
+          tag: 'v-0.0.2'
           artifacts: 'package/**/*.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
