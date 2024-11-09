@@ -33,5 +33,5 @@ jobs:
         with:
           allowUpdates: true
           tag: 'v-0.0.1'
-          artifacts: 'package/**'
+          artifacts: 'package/**/*.exe'
           token: ${{ secrets.GITHUB_TOKEN }}
