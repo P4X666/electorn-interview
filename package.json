@@ -37,7 +37,7 @@
         "dmg",
         "zip"
       ],
-      "icon": "dist/assets/logo-256x256.png"
+      "icon": "dist/assets/logo-512x512.png"
     },
     "dmg": {
       "contents": [
