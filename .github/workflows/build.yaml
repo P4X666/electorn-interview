@@ -30,17 +30,14 @@ jobs:
       # 开始打包
       - name: Build Electron app
         run: |
-          case "${{ matrix.os }}" in
-            ubuntu-latest)
-              npm run build && npm run build-linux
-              ;;
-            windows-latest)
-              npm run build && npm run build-win
-              ;;
-            macos-latest)
-              npm run build && npm run build-mac
-              ;;
-          esac
+          if [ ${{ matrix.os }} == "windows-latest" ]; then
+            npm run build && npm run build-win
+          elif [ ${{ matrix.os }} == "macos-latest" ]; then
+            npm run build && npm run build-mac
+          else
+            npm run build && npm run build-linux
+          fi
+        shell: bash
       # 发布到 release
       - name: Create release
         uses: ncipollo/release-action@v1
@@ -48,15 +45,11 @@ jobs:
           allowUpdates: true
           tag: 'v-0.0.3'
           artifacts: |
-            case "${{ matrix.os }}" in
-              ubuntu-latest)
-                'package/win-unpacked/**'
-              ;;
-              macos-latest)
-                'package/mac/**'
-              ;;
-              windows-latest)
-                'package/linux/**'
-              ;;
-            esac
+            if [ ${{ matrix.os }} == "windows-latest" ]; then
+              'package/win-unpacked/**'
+            elif [ ${{ matrix.os }} == "macos-latest" ]; then
+              'package/mac/**'
+            else
+              'package/linux/**'
+            fi
           token: ${{ secrets.GITHUB_TOKEN }}
