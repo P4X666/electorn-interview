@@ -57,7 +57,7 @@
         "nsis",
         "msi"
       ],
-      "icon": "dist/images/logo_2b9bce6a6aa3566925714d609706c8a3.png"
+      "icon": "dist/assets/logo.png"
     },
     "linux": {
       "target": [
@@ -65,7 +65,7 @@
         "rpm"
       ],
       "category": "Utility",
-      "icon": "dist/images/logo_2b9bce6a6aa3566925714d609706c8a3.png"
+      "icon": "dist/assets/logo.png"
     }
   },
   "dependencies": {
